@@ -1,0 +1,52 @@
+# ============================
+# 🔐 SEGURANÇA - NUNCA COMMITAR
+# ============================
+
+# Variáveis de ambiente (API keys, secrets)
+.env
+.env.local
+.env.*.local
+
+# Credenciais OAuth do Google
+credentials.json
+token.json
+token_code.txt
+.upwork-session/
+.upwork-session.bak-*/
+
+# ============================
+# 📦 DEPENDÊNCIAS
+# ============================
+node_modules/
+
+# ============================
+# 🗃️ DADOS LOCAIS
+# ============================
+*.db
+*.sqlite
+*.sqlite3
+reports/
+
+# ============================
+# 🛠️ BUILD & CACHE
+# ============================
+dist/
+build/
+*.tsbuildinfo
+.cache/
+
+# ============================
+# 💻 SISTEMA OPERACIONAL
+# ============================
+.DS_Store
+Thumbs.db
+*.log
+
+# ============================
+# 🧠 OBSIDIAN - ESTADO EFÊMERO
+# ============================
+.obsidian/
+.obsidian/workspace.json
+.obsidian/workspaces.json
+.obsidian/workspace-mobile.json
+.obsidian/cache/

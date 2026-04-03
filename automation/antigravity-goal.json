@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "goal": "Continue dispatching, reviewing, and unlocking tasks until there is a tested model and a validated production workspace.",
+  "modelTested": false,
+  "modelTestedAt": null,
+  "stopRequested": false,
+  "notes": "Set modelTested to true only after Codex reviews evidence of a validated tested model and the recurring dispatch loop should stop creating new work. Set stopRequested to true when the user wants the loop paused or stopped before that point. Controlled parallelism is allowed only after the output contract is frozen and a short review checkpoint is defined.",
+  "testedModelCriteria": [
+    "Research generates a dedicated operational handoff artifact.",
+    "The selected opportunity can be expanded into a deterministic operator workspace.",
+    "The proposal layer has a reproducible bootstrap artifact derived from that workspace.",
+    "The service or product sold has a reproducible production workspace with implementation, QA, and handoff checkpoints.",
+    "There is an end-to-end smoke run recorded under reports with explicit residual gaps.",
+    "A final gate review recommends whether the current model is tested enough to stop the loop."
+  ]
+}

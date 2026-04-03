@@ -1,0 +1,16 @@
+{
+  "assumptions": {
+    "internalHourlyCostUsd": 25,
+    "minimumMarginRatio": 0.25,
+    "weights": {
+      "demand": 0.22,
+      "ticket": 0.12,
+      "competition": 0.15,
+      "complexity": 0.13,
+      "fit": 0.18,
+      "speed": 0.05,
+      "economics": 0.15
+    }
+  },
+  "candidates": []
+}

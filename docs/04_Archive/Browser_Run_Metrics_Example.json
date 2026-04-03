@@ -1,0 +1,21 @@
+{
+  "sourcePath": "Automated Upwork browser agent + research/official-signals.json",
+  "runStartedAt": "2026-04-01T05:19:50.605Z",
+  "runEndedAt": "2026-04-01T05:21:36.633Z",
+  "durationMs": 106028,
+  "success": true,
+  "opportunitiesCollected": 24,
+  "challengeWaits": 0,
+  "retries": 0,
+  "outputs": {
+    "markdownPath": "reports/niche-selection-report.md",
+    "jsonPath": "reports/niche-selection-report.json",
+    "sqlitePath": "upwork_research.db"
+  },
+  "browserFlow": {
+    "startedAt": "2026-04-01T05:19:50.647Z",
+    "endedAt": "2026-04-01T05:21:36.207Z",
+    "durationMs": 105560,
+    "success": true
+  }
+}

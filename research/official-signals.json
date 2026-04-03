@@ -1,0 +1,96 @@
+{
+  "sources": [
+    {
+      "title": "Project Catalog Help - How to find a project in Project Catalog",
+      "url": "https://support.upwork.com/hc/en-us/articles/4407894848659-Find-a-project-in-Project-Catalog",
+      "signal": "Project Catalog has clear category groupings and supports browsing by category."
+    },
+    {
+      "title": "Project Catalog Help - What is Project Catalog on Upwork?",
+      "url": "https://support.upwork.com/hc/en-us/articles/10408677826963-What-is-Project-Catalog-on-Upwork",
+      "signal": "Projects are purchased without proposals, with pricing, scope and timing clearly defined."
+    },
+    {
+      "title": "Project Catalog Help - Project Catalog",
+      "url": "https://support.upwork.com/hc/en-us/articles/34956130019603-Project-Catalog",
+      "signal": "Project Catalog supports fixed-price projects, hourly projects, consultations and agencies."
+    },
+    {
+      "title": "Upwork In-Demand Skills 2026",
+      "url": "https://investors.upwork.com/news-releases/news-release-details/upworks-demand-skills-2026-demand-top-ai-skills-more-doubles-ai",
+      "signal": "Upwork publishes demand signals by work category and skill growth."
+    },
+    {
+      "title": "Upwork Project Catalog Landing Page",
+      "url": "https://www.upwork.com/services/",
+      "signal": "Category browsing and packaged service discovery are visible on the public catalog surface."
+    }
+  ],
+  "projectCatalog": {
+    "categories": [
+      "Design",
+      "Video and audio",
+      "Development and IT",
+      "Marketing",
+      "Writing and translation",
+      "Admin and customer support",
+      "Consulting and HR",
+      "Lifestyle",
+      "Other"
+    ],
+    "notableSignals": [
+      "Services are packaged as predefined offers with clear scope, price and timing.",
+      "Clients can compare tiers, add-ons and deliverables without opening a proposal thread.",
+      "The category selected must reflect a service the freelancer can actually offer."
+    ]
+  },
+  "marketplace2026": {
+    "categories": [
+      {
+        "name": "Coding & Web Development",
+        "fastestGrowingSkills": [
+          "AI Integration",
+          "AI Chatbot Development",
+          "Firmware Development"
+        ]
+      },
+      {
+        "name": "Customer Service & Admin Support",
+        "fastestGrowingSkills": [
+          "Ecommerce Management",
+          "Medical Virtual Assistance",
+          "Supply Chain & Logistics Project Management"
+        ]
+      },
+      {
+        "name": "Data Science & Analytics",
+        "fastestGrowingSkills": [
+          "AI Data Annotation & Labeling",
+          "Knowledge Representation",
+          "Generative AI Modeling"
+        ]
+      },
+      {
+        "name": "Design & Creative",
+        "fastestGrowingSkills": [
+          "Graphic Design",
+          "Video Editing",
+          "Presentation Design"
+        ]
+      },
+      {
+        "name": "Sales & Marketing",
+        "fastestGrowingSkills": [
+          "Social Media Marketing",
+          "SEO",
+          "Sales & Business Development"
+        ]
+      }
+    ],
+    "methodologyNotes": [
+      "The report is based on completed jobs and freelancer earnings from the previous calendar year.",
+      "The public signal is useful for spotting categories and skills with sustained demand.",
+      "These signals should be validated by the automated research agent against live marketplace observations before choosing a niche."
+    ]
+  }
+}
