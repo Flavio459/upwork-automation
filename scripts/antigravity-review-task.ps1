@@ -41,9 +41,50 @@ try {
     }
 
     $resultPath = Get-RepoFilePath -RepoRoot $repoRoot -PathValue $task.resultFile
+    $launchPid = Get-OptionalTaskValue -Task $task -Key 'launchPid'
+    $launchPidAlive = $false
+    if ($launchPid) {
+        $launchPidAlive = $null -ne (Get-Process -Id ([int]$launchPid) -ErrorAction SilentlyContinue)
+    }
+
     if (-not (Test-Path -LiteralPath $resultPath)) {
-        Write-Host "Result file still missing for task '$($task.id)': $resultPath"
+        if ($launchPidAlive) {
+            Write-Host "Result file still missing for task '$($task.id)': $resultPath"
+            Write-AntigravityStatus -RepoRoot $repoRoot -QueueFile $queuePath -GoalFile $goalPath | Out-Null
+            exit 0
+        }
+
+        $task.resultObservedAt = (Get-Date).ToString('o')
+        $task.reviewedAt = $task.resultObservedAt
+        $task.status = 'needs_attention'
+        $task.attentionReason = 'launch_pid_dead_no_result'
+        $task.lastReviewMessage = if ($launchPid) {
+            "Launch pid '$launchPid' is no longer alive and no result file was found."
+        } else {
+            'Task has no launch pid and no result file was found.'
+        }
+
+        try {
+            & npx.cmd ts-node -T (Join-Path $repoRoot 'scripts/antigravity-shadow.ts') `
+                sync-review `
+                --task-id $task.id `
+                --state needs_attention `
+                --reviewed-at ([string]$task.reviewedAt) `
+                --result-observed-at ([string]$task.resultObservedAt) `
+                --attention-reason launch_pid_dead_no_result `
+                --last-review-message ([string]$task.lastReviewMessage) 2>$null | Out-Null
+            if ($LASTEXITCODE -ne 0) {
+                throw 'BullMQ shadow review sync command failed.'
+            }
+        }
+        catch {
+            Write-Warning "BullMQ shadow review sync failed: $($_.Exception.Message)"
+        }
+
+        Save-Queue -Queue $queue -PathValue $queuePath
+        Write-AntigravityHistory -RepoRoot $repoRoot -Message "Task '$($task.id)' moved to needs_attention because the worker stopped before writing the result file."
         Write-AntigravityStatus -RepoRoot $repoRoot -QueueFile $queuePath -GoalFile $goalPath | Out-Null
+        Write-Host "Task '$($task.id)' now requires attention because the worker stopped before writing the result file."
         exit 0
     }
 

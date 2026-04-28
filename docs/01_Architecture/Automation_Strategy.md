@@ -1,60 +1,49 @@
-# Estratégia Histórica de Automação de Navegador no Upwork
+# 🛡️ Estratégia Ativa de Automação de Navegador (Antigravity v2.0)
 
 > [!IMPORTANT]
-> Este documento é legado de arquitetura. Ele preserva contexto histórico apenas e nao faz parte do escopo ativo deste projeto.
-
-Este documento define a direção operacional para automação no Upwork, com foco em browser automation supervisionada e observabilidade, conforme os pilares da [[docs/00_Governance/Constitution|Constituição]].
+> Este documento define a estratégia operacional ativa para coleta de dados no Upwork, abandonando métodos baseados em 'bot behavior' (navegação automatizada via CDP) em favor de protocolos de 'Supervisão Ativa'.
 
 ---
 
-## 1. O Dilema: API vs. Browser Automation
+## 1. O Novo Paradigma: Passive-Reader
 
-### 🔹 Caminho A: API Oficial (Prioridade)
-A API oficial é o único método 100% seguro. No entanto, o Upwork é rigoroso na concessão de chaves.
-- **Critérios de Aprovação:** Perfil verificado, método de pagamento ativo, caso de uso legítimo (ex: integração de agência).
-- **Ação:** Devemos solicitar a chave como uma ferramenta de "Gestão de Leads e CRM Interno".
+O Upwork utiliza defesas de borda avançadas (Cloudflare, Beacons). Tentativas de automação que controlam o ciclo de navegação (`page.goto()`, interações forçadas de DOM) são detectadas e bloqueadas com erros 403.
 
-### 🔸 Caminho B: Browser Automation Supervisionada
-Quando a API não cobre o fluxo desejado, a automação de navegador deve ser tratada como uma interface operacional, não como uma extração passiva de HTML.
+### 🔹 Estratégia: Conexão via Porta 9222 (Debugger)
+A conexão de confiança é estabelecida através de um navegador Chrome já aberto manualmente pelo operador.
+
+1.  **Warm-Tab Principle**: O Agente Antigravity não abre a página; ele se anexa a uma aba já "aquecida" (com cookies e desafios de Cloudflare resolvidos pelo humano).
+2.  **Navegação Zero**: O bot apenas lê o conteúdo presente no DOM. Se for necessário navegar para o próximo pacote de vagas, o bot pode solicitar ao humano ou usar comandos de scroll sutis, mas nunca redirecionamentos bruscos de `window.location`.
 
 ---
 
-## 2. Protocolo de "Junta de Agentes"
+## 2. Protocolo de "Resiliência Operacional"
 
-A "Junta de Agentes" é um processo decisório interno onde múltiplos modelos analisam o risco da próxima ação.
+Diferente da versão 1.0, o foco agora é a **defesa da conta**.
 
-| Agente | Função | Foco |
+| Elemento | Regra de Ouro | Por que? |
 | :--- | :--- | :--- |
-| **Pesquisador** | Analisar defesas (Cloudflare, Beacons). | Detecção Técnica. |
-| **Estrategista** | Definir intervalos de tempo e padrões de scroll. | Comportamento Humano. |
-| **Analista de Risco** | Avaliar a "temperatura" da conta. | Prevenção de Bloqueio. |
-
-### Regras de Ouro da Automação:
-1. **Session Persistence:** Reutilizar a sessão autenticada para reduzir fricção e risco operacional.
-2. **Small Steps:** Executar ações pequenas e observáveis.
-3. **Observability First:** Registrar cada passo, estado e falha para depuração.
-4. **Human Review:** Qualquer ação sensível permanece supervisionada.
+| **Identidade** | Persistent Session (W:\.upwork-session) | Manter o 'Trust Score' da conta. |
+| **Coleta** | Passive Scraping em Lote | Evitar disparar monitoramento de DOM mutante. |
+| **Frequência** | On-Demand (Gatilho Manual) | Automações 24/7 são bandeiras vermelhas imediatas. |
 
 ---
 
-## 3. Arquitetura de Modelos (Contexto Legado)
+## 3. Estratégia Econômica: Productized Audit Sprint
 
-Este trecho foi preservado para contexto histórico. O fluxo operacional ativo agora é o sistema solo descrito em `docs/02_Guides/Delivery_Methodology.md`, com pesquisa, qualificação, proposta, localização e delivery documentados separadamente.
+Abandonamos a "Corrida para o Fundo" (baixo valor/alta competição) em favor de uma oferta premium consultiva.
 
-Na versão legada, o projeto de automação era tratado como uma habilidade interna da pilha antiga, sem instanciar modelos separados. O sistema herdaria uma cadeia de escalonamento legada:
-
-1. **Camada 0 (Baseline/Scoring):** Gemini 3 Flash (`google-antigravity/gemini-3-flash`) - Rápido, barato, ideal para triagem em massa.
-2. **Camada 1 (Produção/Draft de Propostas):** DeepSeek Chat - Fallback imediato se o Gemini falhar.
-3. **Camada de Emergência (Failover):** Moonshot Kimi-k2.5 para instabilidade de billing.
-4. **Camada Elite (Estratégia Clara):** Claude Opus 4.6 Thinking - Usado apenas para propostas de extremo alto valor via invocação manual.
-
-***Vantagem:*** Economia de tokens, gerenciamento unificado de billing e contexto integrado com a pilha central legada.
+1.  **Triagem (Scoring)**: Focar em leads com alta complexidade técnica e baixa pressão de preço.
+2.  **Front-end Offer**: Vender um **Audit & Architecture Sprint** de US$ 5,000 (10 dias).
+3.  **Justificativa**: Substituição de "Codificação por hora" por "Segurança de Arquitetura e Redução de Riscos".
 
 ---
 
-## ✍️ Justificativa para API Key (Draft)
+## 4. Cockpit Operacional: Obsidian Interface
 
-"Solicitamos acesso à API para integrar o fluxo de descoberta de oportunidades ao nosso sistema interno de gestão de talentos. O objetivo é automatizar a triagem inicial de oportunidades que coincidam com nossa stack técnica (React, Node.js, Playwright) para reduzir o tempo de resposta aos clientes, mantendo toda a fase de proposta e comunicação sob supervisão humana direta."
+A interface do usuário não é mais o terminal, mas sim arquivos **Markdown** consumidos via **Obsidian**.
+- `reports/` atua como o banco de dados dinâmico.
+- `docs/` atua como o manual canônico e guias de entrega.
 
 ---
-*Assinado pela Junta de Agentes - Versão 1.0*
+*Assinado pelo Operador Antigravity - Atualizado em 2026-04-04*

@@ -1,190 +1,257 @@
 {
-  "tasks": [
-    {
-      "lastReviewAt": "2026-04-02T13:53:48.5573386-03:00",
-      "validationResults": {
-        "command": "rg -n \"\\bjob\\b|\\bjobs\\b|jobId|job_id|scoreJob|analyzeJob\\(|collectJobs|JobsList|selectedJob|Job[A-Z]\\w*|jobHistory|jobsPosted\" docs legacy README.md research\\README.md",
-        "success": true,
-        "exitCode": 0,
-        "output": "legacy\\gmail-flow\\services\\upwork-scraper.ts:60:            const opportunityDescriptionLocator = page.locator('[data-test=\"job-description-text\"]').first();\r\nlegacy\\gmail-flow\\services\\email-parser.ts:21:            const urlMatch = emailBody.match(/https:\\/\\/www\\.upwork\\.com\\/jobs\\/[^\"'\\s>]+/);\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:3:Concluir a auditoria de nomenclatura do repositÃƒÆ’Ã‚Â³rio, removendo os ultimos usos internos de `job/jobs` em favor de `opportunity/opportunities`, sem alterar contratos externos do Upwork.\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:11:- Corrigir residuos internos de `job/jobs` ainda presentes em docs e exemplos.\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:26:  Ainda tem pelo menos um residuo interno: `const jobs = await this.extractJobsWithCaptchaHandling();`\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:28:  Ainda tem residuos textuais como `accepted jobs vs. rejected` e `job requirements`.\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:30:  Contem `job post` em contexto historico; avaliar se deve virar `opportunity post` mantendo URLs intactas.\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:32:  Exemplo claro de contrato externo que deve ser preservado: seletor `job-description-text`.\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:34:  Exemplo claro de contrato externo que deve ser preservado: regex para URL `/jobs/`.\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:39:  `const jobs = await this.extractJobsWithCaptchaHandling();`\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:41:  `Average score of accepted jobs vs. rejected`\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:43:  `match to job requirements`\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:45:  `nao identificado no job post`\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:49:- URLs `https://www.upwork.com/jobs/...`\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:50:- regex para `/jobs/`\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:51:- seletor `[data-test=\"job-description-text\"]`\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:63:- Nenhum residuo interno relevante de `job/jobs` permanece nos arquivos-alvo, exceto contratos externos do Upwork.\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:70:  - `rg -n \"\\\\bjob\\\\b|\\\\bjobs\\\\b|jobId|job_id|scoreJob|analyzeJob\\\\(|collectJobs|JobsList|selectedJob|Job[A-Z]\\\\w*|jobHistory|jobsPosted\" docs legacy README.md research\\\\README.md`\r\nlegacy\\experiments\\simulation.ts:26:            <a href=\"https://www.upwork.com/jobs/~0123456789\">View Opportunity</a>\r\ndocs\\04_Archive\\Worked_Example_Production_Workspace_Bootstrap.md:21:| `source_url` | `https://www.upwork.com/jobs/~db-automation-example` |\r\ndocs\\04_Archive\\Worked_Example_Cinematic_Adjacency.md:21:| `source_url` | `https://www.upwork.com/jobs/~022039072035433923026` |\r\ndocs\\04_Archive\\Worked_Example_AI_Systems_Audit_Sprint_Production_Workspace.md:21:| `source_url` | `https://www.upwork.com/jobs/~ai-systems-audit-example` |"
-      },
-      "contextFiles": [
-        "README.md",
-        "docs/02_Guides/Roadmap.md",
-        "docs/01_Architecture/User_Guide.md",
-        "docs/01_Architecture/Technical_Paper.md",
-        "docs/04_Archive/Worked_Example_Cinematic_Adjacency.md",
-        "legacy/gmail-flow/services/upwork-scraper.ts",
-        "legacy/gmail-flow/services/email-parser.ts"
-      ],
-      "status": "completed",
-      "startedAt": "2026-04-02T00:00:00Z",
-      "id": "terminology-audit",
-      "completedAt": "2026-04-02T13:53:48.5893342-03:00",
-      "taskFile": "docs/plans/2026-04-02-antigravity-terminology-audit.md",
-      "resultFile": "reports/antigravity/2026-04-02-antigravity-terminology-audit.result.md",
-      "lastReviewMessage": "Result file and validations look good.",
-      "reviewedAt": "2026-04-02T13:53:48.5573386-03:00",
-      "missionStage": "supporting-cleanup",
-      "validationCommands": "rg -n \"\\bjob\\b|\\bjobs\\b|jobId|job_id|scoreJob|analyzeJob\\(|collectJobs|JobsList|selectedJob|Job[A-Z]\\w*|jobHistory|jobsPosted\" docs legacy README.md research\\README.md"
-    },
-    {
-      "lastReviewAt": "2026-04-02T13:54:00.5131781-03:00",
-      "validationResults": {
-        "command": "npm run typecheck",
-        "success": true,
-        "exitCode": 0,
-        "output": "> typecheck\r\n> tsc --noEmit"
-      },
-      "contextFiles": [
-        "research/README.md",
-        "scripts/research.ts",
-        "services/niche-research.ts",
-        "docs/03_Templates/Opportunity_Intake_and_Fit.md",
-        "docs/03_Templates/Feasibility_and_Capability_Assessment.md",
-        "docs/03_Templates/Costing_Pricing_and_Timeline.md",
-        "README.md",
-        "docs/02_Guides/Application_Finalization_Plan.md"
-      ],
-      "status": "completed",
-      "startedAt": "2026-04-02T00:00:00Z",
-      "id": "research-handoff-output",
-      "completedAt": "2026-04-02T13:54:00.5131781-03:00",
-      "taskFile": "docs/plans/2026-04-02-antigravity-research-handoff-output.md",
-      "resultFile": "reports/antigravity/2026-04-02-antigravity-research-handoff-output.result.md",
-      "lastReviewMessage": "Result file and validations look good.",
-      "reviewedAt": "2026-04-02T13:54:00.5131781-03:00",
-      "missionStage": "stage-1-research-handoff",
-      "validationCommands": "npm run typecheck"
-    },
-    {
-      "lastReviewAt": "2026-04-03T02:26:50.4240289-03:00",
-      "attentionReason": null,
-      "contextFiles": [
-        "README.md",
-        "research/README.md",
-        "scripts/research.ts",
-        "services/niche-research.ts",
-        "docs/03_Templates/Opportunity_Intake_and_Fit.md",
-        "docs/03_Templates/Feasibility_and_Capability_Assessment.md",
-        "docs/03_Templates/Costing_Pricing_and_Timeline.md",
-        "docs/02_Guides/Application_Finalization_Plan.md"
-      ],
-      "profile": "implementation-strong",
-      "dependsOn": "research-handoff-output",
-      "status": "completed",
-      "dispatchPromptFile": "reports\\antigravity\\dispatch-prompts\\operator-workspace-bootstrap.dispatch.md",
-      "startedAt": "2026-04-02T13:54:14-03:00",
-      "id": "operator-workspace-bootstrap",
-      "launchProfile": null,
-      "launchPid": null,
-      "taskFile": "docs/plans/2026-04-02-antigravity-operator-workspace-bootstrap.md",
-      "resultFile": "reports/antigravity/2026-04-02-antigravity-operator-workspace-bootstrap.result.md",
-      "lastReviewMessage": "Manually marked as completed, result file already generated.",
-      "reviewedAt": "2026-04-03T12:16:03.0693989-03:00",
-      "missionStage": "stage-2-operator-workspace",
-      "resultObservedAt": null,
-      "validationCommands": "npm run typecheck"
-    },
-    {
-      "lastReviewAt": "2026-04-03T02:26:50.4687638-03:00",
-      "attentionReason": null,
-      "contextFiles": [
-        "research/README.md",
-        "docs/03_Templates/Opportunity_Intake_and_Fit.md",
-        "docs/03_Templates/Feasibility_and_Capability_Assessment.md",
-        "docs/03_Templates/Costing_Pricing_and_Timeline.md",
-        "README.md",
-        "docs/02_Guides/Application_Finalization_Plan.md"
-      ],
-      "profile": "review-fast",
-      "dependsOn": "research-handoff-output",
-      "status": "running",
-      "dispatchPromptFile": "reports\\antigravity\\dispatch-prompts\\handoff-contract-audit.dispatch.md",
-      "startedAt": "2026-04-03T14:15:26.4957326-03:00",
-      "id": "handoff-contract-audit",
-      "launchProfile": "review-fast",
-      "launchPid": 11524,
-      "taskFile": "docs/plans/2026-04-02-antigravity-handoff-contract-audit.md",
-      "resultFile": "reports/antigravity/2026-04-02-antigravity-handoff-contract-audit.result.md",
-      "lastReviewMessage": "Task launched in explicit one-at-a-time mode with pid=11524.",
-      "reviewedAt": null,
-      "missionStage": "supporting-contract-audit",
-      "resultObservedAt": null,
-      "validationCommands": "Get-ChildItem reports -Recurse | Select-String -Pattern \"research-handoff\""
-    },
-    {
-      "profile": "implementation-strong",
-      "taskFile": "docs/plans/2026-04-02-antigravity-proposal-bootstrap-pack.md",
-      "id": "proposal-bootstrap-pack",
-      "missionStage": "stage-3-proposal-bootstrap",
-      "contextFiles": [
-        "README.md",
-        "docs/03_Templates/Proposal_and_Localization_Pack.md",
-        "docs/03_Templates/Localization_Review_Checklist.md",
-        "docs/03_Templates/Costing_Pricing_and_Timeline.md",
-        "docs/03_Templates/Opportunity_Intake_and_Fit.md",
-        "docs/02_Guides/Application_Finalization_Plan.md"
-      ],
-      "validationCommands": "npm run typecheck",
-      "status": "pending",
-      "lastReviewMessage": "Task unlocked because dependencies completed.",
-      "dependsOn": "operator-workspace-bootstrap",
-      "attentionReason": null,
-      "resultFile": "reports/antigravity/2026-04-02-antigravity-proposal-bootstrap-pack.result.md"
-    },
-    {
-      "profile": "implementation-strong",
-      "taskFile": "docs/plans/2026-04-02-antigravity-production-workspace-bootstrap.md",
-      "id": "production-workspace-bootstrap",
-      "missionStage": "stage-4-production-workspace",
-      "contextFiles": [
-        "README.md",
-        "docs/02_Guides/Mission_Compass.md",
-        "docs/02_Guides/Application_Finalization_Plan.md",
-        "docs/02_Guides/Delivery_Methodology.md",
-        "docs/03_Templates/Kickoff_Action_Plan_and_Risk_Register.md",
-        "docs/03_Templates/Delivery_Control_and_PR_Log.md",
-        "docs/03_Templates/QA_Acceptance_and_Handoff.md"
-      ],
-      "validationCommands": "npm run typecheck",
-      "status": "blocked",
-      "dependsOn": "proposal-bootstrap-pack",
-      "resultFile": "reports/antigravity/2026-04-02-antigravity-production-workspace-bootstrap.result.md"
-    },
-    {
-      "profile": "review-fast",
-      "taskFile": "docs/plans/2026-04-02-antigravity-end-to-end-smoke-run.md",
-      "id": "end-to-end-smoke-run",
-      "missionStage": "stage-5-e2e-proof",
-      "contextFiles": [
-        "README.md",
-        "research/README.md",
-        "docs/02_Guides/Application_Finalization_Plan.md",
-        "docs/02_Guides/Roadmap.md"
-      ],
-      "validationCommands": "npm run typecheck",
-      "status": "blocked",
-      "dependsOn": "production-workspace-bootstrap",
-      "resultFile": "reports/antigravity/2026-04-02-antigravity-end-to-end-smoke-run.result.md"
-    },
-    {
-      "profile": "review-fast",
-      "taskFile": "docs/plans/2026-04-02-antigravity-tested-model-gate.md",
-      "id": "tested-model-gate",
-      "missionStage": "stage-6-tested-model-gate",
-      "contextFiles": [
-        "README.md",
-        "automation/antigravity-goal.json",
-        "docs/02_Guides/Application_Finalization_Plan.md",
-        "docs/02_Guides/Antigravity_Delegation_and_Review.md"
-      ],
-      "validationCommands": "Get-Content automation/antigravity-goal.json -Raw",
-      "status": "blocked",
-      "dependsOn": "end-to-end-smoke-run",
-      "resultFile": "reports/antigravity/2026-04-02-antigravity-tested-model-gate.result.md"
-    }
-  ],
-  "version": 2,
-  "maxActiveTasks": 1
+    "tasks":  [
+                  {
+                      "startedAt":  "2026-04-02T00:00:00Z",
+                      "id":  "terminology-audit",
+                      "lastReviewAt":  "2026-04-02T13:53:48.5573386-03:00",
+                      "missionStage":  "supporting-cleanup",
+                      "resultFile":  "reports/antigravity/2026-04-02-antigravity-terminology-audit.result.md",
+                      "lastReviewMessage":  "Result file and validations look good.",
+                      "completedAt":  "2026-04-02T13:53:48.5893342-03:00",
+                      "validationResults":  {
+                                                "output":  "legacy\\gmail-flow\\services\\upwork-scraper.ts:60:            const opportunityDescriptionLocator = page.locator(\u0027[data-test=\"job-description-text\"]\u0027).first();\r\nlegacy\\gmail-flow\\services\\email-parser.ts:21:            const urlMatch = emailBody.match(/https:\\/\\/www\\.upwork\\.com\\/jobs\\/[^\"\u0027\\s\u003e]+/);\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:3:Concluir a auditoria de nomenclatura do repositÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³rio, removendo os ultimos usos internos de `job/jobs` em favor de `opportunity/opportunities`, sem alterar contratos externos do Upwork.\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:11:- Corrigir residuos internos de `job/jobs` ainda presentes em docs e exemplos.\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:26:  Ainda tem pelo menos um residuo interno: `const jobs = await this.extractJobsWithCaptchaHandling();`\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:28:  Ainda tem residuos textuais como `accepted jobs vs. rejected` e `job requirements`.\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:30:  Contem `job post` em contexto historico; avaliar se deve virar `opportunity post` mantendo URLs intactas.\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:32:  Exemplo claro de contrato externo que deve ser preservado: seletor `job-description-text`.\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:34:  Exemplo claro de contrato externo que deve ser preservado: regex para URL `/jobs/`.\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:39:  `const jobs = await this.extractJobsWithCaptchaHandling();`\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:41:  `Average score of accepted jobs vs. rejected`\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:43:  `match to job requirements`\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:45:  `nao identificado no job post`\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:49:- URLs `https://www.upwork.com/jobs/...`\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:50:- regex para `/jobs/`\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:51:- seletor `[data-test=\"job-description-text\"]`\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:63:- Nenhum residuo interno relevante de `job/jobs` permanece nos arquivos-alvo, exceto contratos externos do Upwork.\r\ndocs\\plans\\2026-04-02-antigravity-terminology-audit.md:70:  - `rg -n \"\\\\bjob\\\\b|\\\\bjobs\\\\b|jobId|job_id|scoreJob|analyzeJob\\\\(|collectJobs|JobsList|selectedJob|Job[A-Z]\\\\w*|jobHistory|jobsPosted\" docs legacy README.md research\\\\README.md`\r\nlegacy\\experiments\\simulation.ts:26:            \u003ca href=\"https://www.upwork.com/jobs/~0123456789\"\u003eView Opportunity\u003c/a\u003e\r\ndocs\\04_Archive\\Worked_Example_Production_Workspace_Bootstrap.md:21:| `source_url` | `https://www.upwork.com/jobs/~db-automation-example` |\r\ndocs\\04_Archive\\Worked_Example_Cinematic_Adjacency.md:21:| `source_url` | `https://www.upwork.com/jobs/~022039072035433923026` |\r\ndocs\\04_Archive\\Worked_Example_AI_Systems_Audit_Sprint_Production_Workspace.md:21:| `source_url` | `https://www.upwork.com/jobs/~ai-systems-audit-example` |",
+                                                "exitCode":  0,
+                                                "command":  "rg -n \"\\bjob\\b|\\bjobs\\b|jobId|job_id|scoreJob|analyzeJob\\(|collectJobs|JobsList|selectedJob|Job[A-Z]\\w*|jobHistory|jobsPosted\" docs legacy README.md research\\README.md",
+                                                "success":  true
+                                            },
+                      "validationCommands":  "rg -n \"\\bjob\\b|\\bjobs\\b|jobId|job_id|scoreJob|analyzeJob\\(|collectJobs|JobsList|selectedJob|Job[A-Z]\\w*|jobHistory|jobsPosted\" docs legacy README.md research\\README.md",
+                      "status":  "completed",
+                      "contextFiles":  [
+                                           "README.md",
+                                           "docs/02_Guides/Roadmap.md",
+                                           "docs/01_Architecture/User_Guide.md",
+                                           "docs/01_Architecture/Technical_Paper.md",
+                                           "docs/04_Archive/Worked_Example_Cinematic_Adjacency.md",
+                                           "legacy/gmail-flow/services/upwork-scraper.ts",
+                                           "legacy/gmail-flow/services/email-parser.ts"
+                                       ],
+                      "reviewedAt":  "2026-04-02T13:53:48.5573386-03:00",
+                      "taskFile":  "docs/plans/2026-04-02-antigravity-terminology-audit.md"
+                  },
+                  {
+                      "startedAt":  "2026-04-02T00:00:00Z",
+                      "id":  "research-handoff-output",
+                      "lastReviewAt":  "2026-04-02T13:54:00.5131781-03:00",
+                      "missionStage":  "stage-1-research-handoff",
+                      "resultFile":  "reports/antigravity/2026-04-02-antigravity-research-handoff-output.result.md",
+                      "lastReviewMessage":  "Result file and validations look good.",
+                      "completedAt":  "2026-04-02T13:54:00.5131781-03:00",
+                      "validationResults":  {
+                                                "output":  "\u003e typecheck\r\n\u003e tsc --noEmit",
+                                                "exitCode":  0,
+                                                "command":  "npm run typecheck",
+                                                "success":  true
+                                            },
+                      "validationCommands":  "npm run typecheck",
+                      "status":  "completed",
+                      "contextFiles":  [
+                                           "research/README.md",
+                                           "scripts/research.ts",
+                                           "services/niche-research.ts",
+                                           "docs/03_Templates/Opportunity_Intake_and_Fit.md",
+                                           "docs/03_Templates/Feasibility_and_Capability_Assessment.md",
+                                           "docs/03_Templates/Costing_Pricing_and_Timeline.md",
+                                           "README.md",
+                                           "docs/02_Guides/Application_Finalization_Plan.md"
+                                       ],
+                      "reviewedAt":  "2026-04-02T13:54:00.5131781-03:00",
+                      "taskFile":  "docs/plans/2026-04-02-antigravity-research-handoff-output.md"
+                  },
+                  {
+                      "startedAt":  "2026-04-02T13:54:14-03:00",
+                      "id":  "operator-workspace-bootstrap",
+                      "launchProfile":  null,
+                      "lastReviewAt":  "2026-04-03T02:26:50.4240289-03:00",
+                      "launchPid":  null,
+                      "missionStage":  "stage-2-operator-workspace",
+                      "validationCommands":  "npm run typecheck",
+                      "lastReviewMessage":  "Manually marked as completed, result file already generated.",
+                      "attentionReason":  null,
+                      "dispatchPromptFile":  "reports\\antigravity\\dispatch-prompts\\operator-workspace-bootstrap.dispatch.md",
+                      "dependsOn":  "research-handoff-output",
+                      "resultObservedAt":  null,
+                      "resultFile":  "reports/antigravity/2026-04-02-antigravity-operator-workspace-bootstrap.result.md",
+                      "status":  "completed",
+                      "contextFiles":  [
+                                           "README.md",
+                                           "research/README.md",
+                                           "scripts/research.ts",
+                                           "services/niche-research.ts",
+                                           "docs/03_Templates/Opportunity_Intake_and_Fit.md",
+                                           "docs/03_Templates/Feasibility_and_Capability_Assessment.md",
+                                           "docs/03_Templates/Costing_Pricing_and_Timeline.md",
+                                           "docs/02_Guides/Application_Finalization_Plan.md"
+                                       ],
+                      "profile":  "implementation-strong",
+                      "reviewedAt":  "2026-04-03T12:16:03.0693989-03:00",
+                      "taskFile":  "docs/plans/2026-04-02-antigravity-operator-workspace-bootstrap.md"
+                  },
+                  {
+                      "startedAt":  "2026-04-03T14:15:26.4957326-03:00",
+                      "id":  "handoff-contract-audit",
+                      "launchProfile":  "review-fast",
+                      "lastReviewAt":  "2026-04-03T02:26:50.4687638-03:00",
+                      "launchPid":  11524,
+                      "missionStage":  "supporting-contract-audit",
+                      "validationCommands":  "Get-ChildItem reports -Recurse | Select-String -Pattern \"research-handoff\"",
+                      "lastReviewMessage":  "Result file and validations look good.",
+                      "attentionReason":  null,
+                      "validationResults":  {
+                                                "output":  "reports\\browser-run-metrics.json:1:{\"sourcePath\":\"Automated Upwork browser agent + research\\\\official-signals.json\",\"runStartedAt\":\"2026-04-02T16:26:44.813Z\",\"runEndedAt\":\"2026-04-02T16:27:41.583Z\",\"durationMs\":56770,\"success\":true,\"opportunitiesCollected\":24,\"challengeWaits\":0,\"retries\":0,\"outputs\":{\"markdownPath\":\"W:\\\\flavi\\\\Aplicativos\\\\AutomaÃ§Ã£o UPWORK\\\\reports\\\\niche-selection-report.md\",\"jsonPath\":\"W:\\\\flavi\\\\Aplicativos\\\\AutomaÃ§Ã£o UPWORK\\\\reports\\\\niche-selection-report.json\",\"handoffMarkdownPath\":\"W:\\\\flavi\\\\Aplicativos\\\\AutomaÃ§Ã£o UPWORK\\\\reports\\\\research-handoff.md\",\"handoffJsonPath\":\"W:\\\\flavi\\\\Aplicativos\\\\AutomaÃ§Ã£o UPWORK\\\\reports\\\\research-handoff.json\",\"sqlitePath\":\"W:\\\\flavi\\\\Aplicativos\\\\AutomaÃ§Ã£o UPWORK\\\\upwork_research.db\"},\"browserFlow\":{\"startedAt\":\"2026-04-02T16:26:44.896Z\",\"endedAt\":\"2026-04-02T16:27:40.923Z\",\"durationMs\":56027,\"success\":true}}\r\nreports\\runtime-handoff.json:61:      \"id\": \"research-handoff-output\",\r\nreports\\runtime-handoff.json:64:        \"reports/research-handoff.md\",\r\nreports\\runtime-handoff.json:65:        \"reports/antigravity/2026-04-02-antigravity-research-handoff-output.result.md\"\r\nreports\\runtime-handoff.json:147:      \"path\": \"reports/research-handoff.md\",\r\nreports\\runtime-handoff.json:151:      \"path\": \"reports/research-handoff.json\",\r\nreports\\antigravity\\2026-04-02-antigravity-handoff-contract-audit.result.md:3:- Auditei o contrato real do handoff gerado por `research-handoff-output` contra os templates de `intake`, `viability` e `pricing`.\r\nreports\\antigravity\\2026-04-02-antigravity-handoff-contract-audit.result.md:17:- Leitura do handoff real em `reports/research-handoff.md`\r\nreports\\antigravity\\2026-04-02-antigravity-handoff-contract-audit.result.md:18:- Leitura do artefato estruturado em `reports/research-handoff.json`\r\nreports\\antigravity\\2026-04-02-antigravity-handoff-contract-audit.result.md:68:  - `reports/research-handoff.md`\r\nreports\\antigravity\\2026-04-02-antigravity-handoff-contract-audit.result.md:69:  - `reports/research-handoff.json`\r\nreports\\antigravity\\2026-04-02-antigravity-operator-workspace-bootstrap.result.md:4:- A oportunidade escolhida foi `ai advisory`, vinda do `reports/research-handoff.md`.\r\nreports\\antigravity\\2026-04-02-antigravity-operator-workspace-bootstrap.result.md:21:- leitura do `reports/research-handoff.md`\r\nreports\\antigravity\\2026-04-02-antigravity-operator-workspace-bootstrap.result.md:22:- leitura do `reports/antigravity/2026-04-02-antigravity-research-handoff-output.result.md`\r\nreports\\antigravity\\2026-04-02-antigravity-operator-workspace-bootstrap.result.md:45:- Preservei o fluxo de research existente e o uso de `reports/research-handoff.md` como fonte.\r\nreports\\antigravity\\2026-04-02-antigravity-proposal-bootstrap-pack.result.md:22:- Leitura do handoff real em `reports/research-handoff.md`\r\nreports\\antigravity\\2026-04-02-antigravity-research-handoff-output.result.md:3:Adicionei uma saida de handoff dedicada ao fluxo `npm run research`, gerando `reports/research-handoff.md` e `reports/research-handoff.json` a partir do melhor candidato disponivel no shortlist. O handoff usa dados reais do `research`, preserva placeholders honestos para campos ausentes e faz a transicao para os tres templates operacionais iniciais.\r\nreports\\antigravity\\2026-04-02-antigravity-research-handoff-output.result.md:11:- `reports/research-handoff.md`\r\nreports\\antigravity\\2026-04-02-antigravity-research-handoff-output.result.md:12:- `reports/research-handoff.json`\r\nreports\\antigravity\\2026-04-02-antigravity-research-handoff-output.result.md:18:- revisao manual dos artefatos gerados em `reports/research-handoff.md` e `reports/research-handoff.json`\r\nreports\\antigravity\\2026-04-03-antigravity-localization-review-checklist.result.md:19:- Leitura de `reports/research-handoff.md`\r\nreports\\antigravity\\antigravity-shadow.sqlite:36:\u0000\u0000\u0000\u0002\t\u0004\u0000\f=\t\u0004\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000ï¿½6\u0002\u001d99?ï¿½\u0003ï¿½#ï¿½{ï¿½-#C\u001bOO\u0000\u0000\u0002#ï¿½\u001b\u0000\u0000W\u0000\u001b=handoff-contract-audithandoff-contract-auditsupporting-contract-auditdocs/plans/2026-04-02-antigravity-handoff-contract-audit.mdreports/antigravity/2026-04-02-antigravity-handoff-contract-audit.result.md[\"research/README.md\",\"docs/03_Templates/Opportunity_Intake_and_Fit.md\",\"docs/03_Templates/Feasibility_and_Capability_Assessment.md\",\"docs/03_Templates/Costing_Pricing_and_Timeline.md\",\"README.md\",\"docs/02_Guides/Application_Finalization_Plan.md\"][\"Get-ChildItem reports -Recurse | Select-String -Pattern \\\"research-handoff\\\"\"]review-fast[\"research-handoff-output\"]running2026-04-03T14:15:26.4957326-03:002026-04-03T14:15:26.4957326-03:00-\u0004review-fastreports\\antigravity\\dispatch-prompts\\handoff-contract-audit.dispatch.mdAccepted and launched with pid=11524.running2026-04-03T17:15:30.724Zï¿½@\u0001\u001dEEAï¿½\u000fï¿½/ï¿½a77C+OO\u0000O\u00027ï¿½\u0027\u0000?ï¿½\u0011\u0000\u001b=operator-workspace-bootstrapoperator-workspace-bootstrapstage-2-operator-workspacedocs/plans/2026-04-02-antigravity-operator-workspace-bootstrap.mdreports/antigravity/2026-04-02-antigravity-operator-workspace-bootstrap.result.md[\"README.md\",\"research/README.md\",\"scripts/research.ts\",\"services/niche-research.ts\",\"docs/03_Templates/Opportunity_Intake_and_Fit.md\",\"docs/03_Templates/Feasibility_and_Capability_Assessment.md\",\"docs/03_Templates/Costing_Pricing_and_Timeline.md\",\"docs/02_Guides/Application_Finalization_Plan.md\"][\"npm run typecheck\"]implementation-strong[\"research-handoff-output\"]needs_attention2026-04-03T12:14:27.6440771-03:002026-04-03T12:14:27.6440771-03:002026-04-03T12:16:03.0693989-03:00\bTimplementation-strongreports/antigravity/dispatch-prompts/operator-workspace-bootstrap.dispatch.mdlaunch_pid_dead_no_resultLaunch pid \u00272132\u0027 is no longer alive and no result file was found.running2026-04-03T15:16:08.213Z\r\nreports\\antigravity\\orchestrator.log:2:[2026-04-02T13:51:23] Task \u0027research-handoff-output\u0027 completed successfully.\r\nreports\\antigravity\\orchestrator.log:6:[2026-04-02T13:54:00] Task \u0027research-handoff-output\u0027 completed successfully.\r\nreports\\antigravity\\status.json:59:      \"id\": \"research-handoff-output\",\r\nreports\\antigravity\\status.json:60:      \"missionStage\": \"stage-1-research-handoff\",\r\nreports\\antigravity\\status.json:64:      \"resultFile\": \"reports/antigravity/2026-04-02-antigravity-research-handoff-output.result.md\",\r\nreports\\antigravity\\status.json:66:      \"expectedResultPath\": \"W:\\\\flavi\\\\Aplicativos\\\\AutomaÃ§Ã£o UPWORK\\\\reports\\\\antigravity\\\\2026-04-02-antigravity-research-handoff-output.result.md\",\r\nreports\\antigravity\\status.json:209:      \"id\": \"research-handoff-output\",\r\nreports\\antigravity\\status.json:292:      \"name\": \"2026-04-02-antigravity-research-handoff-output.result.md\",\r\nreports\\antigravity\\status.md:32:- research-handoff-output: status=completed owner=closed profile=default age=2295.5 next=wait_for_downstream_or_close\r\nreports\\antigravity\\status.md:51:- 2026-04-02-antigravity-research-handoff-output.result.md: 2026-04-02T13:49:28.1298935-03:00\r\nreports\\antigravity\\dispatch-prompts\\handoff-contract-audit.dispatch.md:9:O `research-handoff-output` fecha a lacuna principal entre pesquisa e operacao.\r\nreports\\antigravity\\dispatch-prompts\\handoff-contract-audit.dispatch.md:22:- consumir explicitamente o handoff real produzido por `research-handoff-output`\r\nreports\\antigravity\\dispatch-prompts\\handoff-contract-audit.dispatch.md:23:- ler o artefato real gerado por `research-handoff-output`\r\nreports\\antigravity\\dispatch-prompts\\handoff-contract-audit.dispatch.md:38:- `reports/antigravity/2026-04-02-antigravity-research-handoff-output.result.md`\r\nreports\\antigravity\\dispatch-prompts\\handoff-contract-audit.dispatch.md:39:- `reports/research-handoff.md`\r\nreports\\antigravity\\dispatch-prompts\\handoff-contract-audit.dispatch.md:77:- output real em `reports/` criado por `research-handoff-output`\r\nreports\\antigravity\\dispatch-prompts\\handoff-contract-audit.dispatch.md:97:6. O parecer referencia explicitamente o handoff real em `reports/research-handoff.md`.\r\nreports\\antigravity\\dispatch-prompts\\operator-workspace-bootstrap.dispatch.md:23:- consumir explicitamente o artefato real de handoff produzido por `research-handoff-output`\r\nreports\\antigravity\\dispatch-prompts\\operator-workspace-bootstrap.dispatch.md:33:- `reports/antigravity/2026-04-02-antigravity-research-handoff-output.result.md`\r\nreports\\antigravity\\dispatch-prompts\\operator-workspace-bootstrap.dispatch.md:34:- `reports/research-handoff.md`\r\nreports\\antigravity\\dispatch-prompts\\operator-workspace-bootstrap.dispatch.md:98:6. O artefato referencia explicitamente `reports/research-handoff.md` ou o `resultFile` anterior como fonte.\r\nreports\\operator-workspaces\\ai-advisory\\01_opportunity_intake_and_fit.md:5:- `reports/research-handoff.md`\r\nreports\\operator-workspaces\\ai-advisory\\01_opportunity_intake_and_fit.md:6:- `reports/antigravity/2026-04-02-antigravity-research-handoff-output.result.md`\r\nreports\\operator-workspaces\\ai-advisory\\02_feasibility_and_capability_assessment.md:5:- `reports/research-handoff.md`\r\nreports\\operator-workspaces\\ai-advisory\\02_feasibility_and_capability_assessment.md:6:- `reports/antigravity/2026-04-02-antigravity-research-handoff-output.result.md`\r\nreports\\operator-workspaces\\ai-advisory\\03_costing_pricing_and_timeline.md:5:- `reports/research-handoff.md`\r\nreports\\operator-workspaces\\ai-advisory\\03_costing_pricing_and_timeline.md:6:- `reports/antigravity/2026-04-02-antigravity-research-handoff-output.result.md`\r\nreports\\operator-workspaces\\ai-advisory\\README.md:4:\u003e Workspace operacional gerado a partir de `reports/research-handoff.md` e do result file anterior do stage de handoff.\r\nreports\\operator-workspaces\\ai-advisory\\README.md:9:- `reports/research-handoff.md`\r\nreports\\operator-workspaces\\ai-advisory\\README.md:10:- `reports/antigravity/2026-04-02-antigravity-research-handoff-output.result.md`\r\nreports\\proposal-bootstrap\\ai-advisory\\README.md:24:- `reports/research-handoff.md`",
+                                                "exitCode":  0,
+                                                "command":  "Get-ChildItem reports -Recurse | Select-String -Pattern \"research-handoff\"",
+                                                "success":  true
+                                            },
+                      "dependsOn":  "research-handoff-output",
+                      "resultObservedAt":  "2026-04-03T14:23:23.378798-03:00",
+                      "completedAt":  "2026-04-03T14:23:23.6156285-03:00",
+                      "resultFile":  "reports/antigravity/2026-04-02-antigravity-handoff-contract-audit.result.md",
+                      "reviewedAt":  "2026-04-03T14:23:23.382609-03:00",
+                      "status":  "completed",
+                      "contextFiles":  [
+                                           "research/README.md",
+                                           "docs/03_Templates/Opportunity_Intake_and_Fit.md",
+                                           "docs/03_Templates/Feasibility_and_Capability_Assessment.md",
+                                           "docs/03_Templates/Costing_Pricing_and_Timeline.md",
+                                           "README.md",
+                                           "docs/02_Guides/Application_Finalization_Plan.md"
+                                       ],
+                      "profile":  "review-fast",
+                      "dispatchPromptFile":  "reports\\antigravity\\dispatch-prompts\\handoff-contract-audit.dispatch.md",
+                      "taskFile":  "docs/plans/2026-04-02-antigravity-handoff-contract-audit.md"
+                  },
+                  {
+                      "startedAt":  "2026-04-03T14:23:55.0367147-03:00",
+                      "id":  "proposal-bootstrap-pack",
+                      "launchProfile":  "implementation-strong",
+                      "dispatchPromptFile":  "reports\\antigravity\\dispatch-prompts\\proposal-bootstrap-pack.dispatch.md",
+                      "launchPid":  19880,
+                      "missionStage":  "stage-3-proposal-bootstrap",
+                      "validationCommands":  "npm run typecheck",
+                      "lastReviewMessage":  "Result file and validations look good.",
+                      "attentionReason":  null,
+                      "validationResults":  {
+                                                "output":  "\u003e typecheck\r\n\u003e tsc --noEmit",
+                                                "exitCode":  0,
+                                                "command":  "npm run typecheck",
+                                                "success":  true
+                                            },
+                      "dependsOn":  "operator-workspace-bootstrap",
+                      "resultObservedAt":  "2026-04-03T14:27:03.9374099-03:00",
+                      "completedAt":  "2026-04-03T14:27:11.7710617-03:00",
+                      "resultFile":  "reports/antigravity/2026-04-02-antigravity-proposal-bootstrap-pack.result.md",
+                      "status":  "completed",
+                      "contextFiles":  [
+                                           "README.md",
+                                           "docs/03_Templates/Proposal_and_Localization_Pack.md",
+                                           "docs/03_Templates/Localization_Review_Checklist.md",
+                                           "docs/03_Templates/Costing_Pricing_and_Timeline.md",
+                                           "docs/03_Templates/Opportunity_Intake_and_Fit.md",
+                                           "docs/02_Guides/Application_Finalization_Plan.md"
+                                       ],
+                      "profile":  "implementation-strong",
+                      "reviewedAt":  "2026-04-03T14:27:03.9424344-03:00",
+                      "taskFile":  "docs/plans/2026-04-02-antigravity-proposal-bootstrap-pack.md"
+                  },
+                  {
+                      "startedAt":  "2026-04-03T14:28:51.2861450-03:00",
+                      "id":  "production-workspace-bootstrap",
+                      "launchProfile":  "implementation-strong",
+                      "dispatchPromptFile":  "reports\\antigravity\\dispatch-prompts\\production-workspace-bootstrap.dispatch.md",
+                      "launchPid":  10780,
+                      "missionStage":  "stage-4-production-workspace",
+                      "validationCommands":  "npm run typecheck",
+                      "lastReviewMessage":  "Result file and validations look good.",
+                      "attentionReason":  null,
+                      "validationResults":  {
+                                                "output":  "\u003e typecheck\r\n\u003e tsc --noEmit",
+                                                "exitCode":  0,
+                                                "command":  "npm run typecheck",
+                                                "success":  true
+                                            },
+                      "dependsOn":  "proposal-bootstrap-pack",
+                      "resultObservedAt":  "2026-04-03T14:33:15.6046931-03:00",
+                      "completedAt":  "2026-04-03T14:33:35.1483400-03:00",
+                      "resultFile":  "reports/antigravity/2026-04-02-antigravity-production-workspace-bootstrap.result.md",
+                      "status":  "completed",
+                      "contextFiles":  [
+                                           "README.md",
+                                           "docs/02_Guides/Mission_Compass.md",
+                                           "docs/02_Guides/Application_Finalization_Plan.md",
+                                           "docs/02_Guides/Delivery_Methodology.md",
+                                           "docs/03_Templates/Kickoff_Action_Plan_and_Risk_Register.md",
+                                           "docs/03_Templates/Delivery_Control_and_PR_Log.md",
+                                           "docs/03_Templates/QA_Acceptance_and_Handoff.md"
+                                       ],
+                      "profile":  "implementation-strong",
+                      "reviewedAt":  "2026-04-03T14:33:15.6136907-03:00",
+                      "taskFile":  "docs/plans/2026-04-02-antigravity-production-workspace-bootstrap.md"
+                  },
+                  {
+                      "startedAt":  "2026-04-03T14:42:02.4322838-03:00",
+                      "id":  "end-to-end-smoke-run",
+                      "launchProfile":  "review-fast",
+                      "dispatchPromptFile":  "reports\\antigravity\\dispatch-prompts\\end-to-end-smoke-run.dispatch.md",
+                      "launchPid":  19720,
+                      "missionStage":  "stage-5-e2e-proof",
+                      "validationCommands":  "npm run typecheck",
+                      "lastReviewMessage":  "Result file and validations look good.",
+                      "attentionReason":  null,
+                      "validationResults":  {
+                                                "output":  "\u003e typecheck\r\n\u003e tsc --noEmit",
+                                                "exitCode":  0,
+                                                "command":  "npm run typecheck",
+                                                "success":  true
+                                            },
+                      "dependsOn":  "production-workspace-bootstrap",
+                      "resultObservedAt":  "2026-04-03T14:46:01.3875563-03:00",
+                      "completedAt":  "2026-04-03T14:46:35.9781424-03:00",
+                      "resultFile":  "reports/antigravity/2026-04-02-antigravity-end-to-end-smoke-run.result.md",
+                      "status":  "completed",
+                      "contextFiles":  [
+                                           "README.md",
+                                           "research/README.md",
+                                           "docs/02_Guides/Application_Finalization_Plan.md",
+                                           "docs/02_Guides/Roadmap.md"
+                                       ],
+                      "profile":  "review-fast",
+                      "reviewedAt":  "2026-04-03T14:46:01.3947159-03:00",
+                      "taskFile":  "docs/plans/2026-04-02-antigravity-end-to-end-smoke-run.md"
+                  },
+                  {
+                      "startedAt":  "2026-04-03T14:53:51.7848363-03:00",
+                      "id":  "tested-model-gate",
+                      "launchProfile":  "review-fast",
+                      "dispatchPromptFile":  "reports\\antigravity\\dispatch-prompts\\tested-model-gate.dispatch.md",
+                      "launchPid":  12384,
+                      "missionStage":  "stage-6-tested-model-gate",
+                      "validationCommands":  "Get-Content automation/antigravity-goal.json -Raw",
+                      "lastReviewMessage":  "Result file and validations look good.",
+                      "attentionReason":  null,
+                      "validationResults":  [
+                                                {
+                                                    "output":  "{\n  \"version\": 1,\n  \"goal\": \"Continue dispatching, reviewing, and unlocking tasks until there is a tested model and a validated production workspace.\",\n  \"modelTested\": false,\n  \"modelTestedAt\": null,\n  \"stopRequested\": false,\n  \"notes\": \"Set modelTested to true only after Codex reviews evidence of a validated tested model and the recurring dispatch loop should stop creating new work. Set stopRequested to true when the user wants the loop paused or stopped before that point. Controlled parallelism is allowed only after the output contract is frozen and a short review checkpoint is defined.\",\n  \"testedModelCriteria\": [\n    \"Research generates a dedicated operational handoff artifact.\",\n    \"The selected opportunity can be expanded into a deterministic operator workspace.\",\n    \"The proposal layer has a reproducible bootstrap artifact derived from that workspace.\",\n    \"The service or product sold has a reproducible production workspace with implementation, QA, and handoff checkpoints.\",\n    \"There is an end-to-end smoke run recorded under reports with explicit residual gaps.\",\n    \"A final gate review recommends whether the current model is tested enough to stop the loop.\"\n  ]\n}",
+                                                    "exitCode":  0,
+                                                    "command":  "Get-Content automation/antigravity-goal.json -Raw",
+                                                    "success":  true
+                                                }
+                                            ],
+                      "dependsOn":  "end-to-end-smoke-run",
+                      "resultObservedAt":  "2026-04-03T15:01:17.9322592-03:00",
+                      "completedAt":  "2026-04-03T15:01:19.8507771-03:00",
+                      "resultFile":  "reports/antigravity/2026-04-02-antigravity-tested-model-gate.result.md",
+                      "status":  "completed",
+                      "contextFiles":  [
+                                           "README.md",
+                                           "automation/antigravity-goal.json",
+                                           "docs/02_Guides/Application_Finalization_Plan.md",
+                                           "docs/02_Guides/Antigravity_Delegation_and_Review.md"
+                                       ],
+                      "profile":  "review-fast",
+                      "reviewedAt":  "2026-04-03T15:01:17.9392594-03:00",
+                      "taskFile":  "docs/plans/2026-04-02-antigravity-tested-model-gate.md"
+                  }
+              ],
+    "maxActiveTasks":  1,
+    "version":  2
 }

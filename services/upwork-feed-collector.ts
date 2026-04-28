@@ -23,7 +23,7 @@ export interface UpworkFeedCollectorOptions {
 }
 
 const FEED_URL = 'https://www.upwork.com/nx/find-work/best-matches';
-const DEFAULT_CHALLENGE_TIMEOUT_MS = 120000;
+const DEFAULT_CHALLENGE_TIMEOUT_MS = 30000;
 const DEFAULT_CHALLENGE_INTERVAL_MS = 2000;
 const DEFAULT_MAX_SCROLL_ROUNDS = 4;
 const DEFAULT_MAX_OPPORTUNITIES = 24;
@@ -57,33 +57,101 @@ export class UpworkBrowserFeedCollector {
         let page: Page | null = null;
 
         try {
-            context = await this.browserManager.init(this.headless);
-            page = await context.newPage();
-            await page.setViewportSize({ width: 1440, height: 1200 });
+            console.log(`📡 [UpworkFeedCollector] Inicializando motor de navegação...`);
+            try {
+                context = await this.browserManager.init(this.headless);
+            } catch (initError) {
+                console.log(`   ⚠️ [UpworkFeedCollector] Falha na inicialização clássica.`);
+                const wsUrl = await this.browserManager.getUpworkWebSocketUrl();
+                if (wsUrl) {
+                    throw new Error(
+                        `O Chrome está aberto e a aba do Upwork foi detectada, mas o Playwright não consegue o controle.\n` +
+                        `Isso acontece se o processo "npm run login" ainda estiver travando o perfil.\n` +
+                        `RESOLUÇÃO: Vá ao terminal onde você rodou "npm run login" e aperte CTRL+C (isso libera o lock mantendo o Chrome aberto).\n` +
+                        `Depois, rode "npm run research" novamente.`
+                    );
+                }
+                throw initError;
+            }
 
-            console.log('\n🧭 [UpworkBrowserFeedCollector] Opening authenticated Upwork best-matches feed...');
-            await page.goto(FEED_URL, { waitUntil: 'domcontentloaded', timeout: 45000 });
-            await this.ensurePageReady(page, 'Upwork best-matches feed');
+            // Passive-reader: encontra a aba do Upwork que o usuário já abriu.
+            // NUNCA usa page.goto() porque Cloudflare detecta navegação via CDP.
+            const existingPages = context.pages();
+            const upworkPage = existingPages.find(p => p.url().includes('upwork.com'));
+
+            if (!upworkPage) {
+                // Nenhuma aba do Upwork encontrada — instrui o usuário
+                const tabUrls = existingPages.map(p => p.url()).join(', ');
+                throw new Error(
+                    [
+                        'Nenhuma aba do Upwork encontrada no Chrome (porta 9222).',
+                        `Abas visíveis: [${tabUrls || 'nenhuma'}].`,
+                        '',
+                        'Para resolver:',
+                        '1. Abra o Chrome que foi iniciado com "npm run login"',
+                        '2. Navegue manualmente para: https://www.upwork.com/nx/find-work/best-matches',
+                        '3. Aguarde a página carregar completamente',
+                        '4. Rode "npm run research" novamente',
+                    ].join('\n')
+                );
+            }
+
+            page = upworkPage;
+            await page.bringToFront().catch(() => null);
+
+            const currentUrl = page.url();
+            console.log(`\n🧭 [UpworkBrowserFeedCollector] Aba Upwork encontrada: ${currentUrl}`);
+
+            // Passive-reader: ZERO navegação automatizada. Cloudflare detecta qualquer
+            // goto/redirect via CDP. O script só lê o que o usuário já abriu manualmente.
+            // Se não estiver numa página de feed, avisa o usuário.
+            const isFeedPage = currentUrl.includes('/find-work') ||
+                               currentUrl.includes('/search/jobs') ||
+                               currentUrl.includes('/freelance-jobs') ||
+                               currentUrl.includes('/best-matches');
+
+            if (!isFeedPage) {
+                console.log(`   ⚠️ A aba não está numa página de feed de jobs.`);
+                console.log(`   👉 Navegue manualmente para: https://www.upwork.com/nx/find-work/best-matches`);
+                console.log(`   👉 Depois rode "npm run research" novamente.\n`);
+            }
+
+            // Passive-reader: tenta ler os cards diretamente.
+            // O challenge check pode dar falso positivo quando o CDP está conectado,
+            // então tentamos coletar primeiro e só falhamos se realmente não houver cards.
+            const isChallenge = await this.isChallengePage(page);
+            if (isChallenge) {
+                const title = await page.title().catch(() => '');
+                const snippet = await page.locator('body').innerText().catch(() => '');
+                console.log(`\n   ⚠️ [Diagnóstico] Challenge detectado.`);
+                console.log(`   Title: "${title}"`);
+                console.log(`   Body snippet: "${snippet.slice(0, 200)}"`);
+                console.log(`   Tentando ler cards mesmo assim...`);
+            }
 
             const opportunities = await this.collectVisibleOpportunities(page);
             if (!opportunities.length) {
                 throw new Error(
                     [
-                        `No opportunity cards were visible on ${FEED_URL}.`,
-                        'Solve the browser challenge in the opened Chrome window and try again.'
-                    ].join(' ')
+                        `Nenhum card de oportunidade visível em ${page.url()}.`,
+                        '',
+                        'Para resolver:',
+                        '1. No Chrome, navegue manualmente para: https://www.upwork.com/nx/find-work/best-matches',
+                        '2. Resolva qualquer challenge do Cloudflare',
+                        '3. Aguarde os cards carregarem',
+                        '4. Rode "npm run research" novamente',
+                    ].join('\n')
                 );
             }
 
             console.log(`   ✅ [UpworkBrowserFeedCollector] Collected ${opportunities.length} live opportunity card(s).`);
             return opportunities;
         } finally {
-            if (page) {
-                await page.close().catch(() => null);
-            }
+            // Passive-reader: NÃO fecha a aba. Mantém o contexto "quente".
             await this.browserManager.close();
         }
     }
+
 
     private async collectVisibleOpportunities(page: Page): Promise<LiveUpworkOpportunityCard[]> {
         const opportunities = new Map<string, LiveUpworkOpportunityCard>();

@@ -13,6 +13,20 @@
 | `proposal_status` | `New` |
 | `localized_artifact_status` | `Not Started` |
 
+## 📐 Step Zero: Eligibility Check (Rule of 12%)
+> [!IMPORTANT]
+> - O piso absoluto para qualquer lead é **US$ 400,00**. Abaixo disso, **DESCARTAR** imediatamente.
+> - Se `Real Cost` > `Tolerance (12%)`, o projeto deve ser **DESCARTADO**.
+
+| Item | Valor | Observação |
+| --- | --- | --- |
+| **Est. Hours ($H_{expert}$)** | | Horas para entrega profissional |
+| **Op. Rate ($R_{op}$)** | $100 | Taxa padrão especialista |
+| **Real Cost ($C_{real}$)** | | $H_{expert} \times R_{op}$ |
+| **Client Budget ($B_{client}$)** | | Teto do cliente |
+| **Tolerance (1.12x)** | | $B_{client} \times 1.12$ |
+| **ELIGIBILITY** | | **ELIGIBLE** / **INELIGIBLE** |
+
 ## Resumo do Problema
 
 - `problem_summary`:

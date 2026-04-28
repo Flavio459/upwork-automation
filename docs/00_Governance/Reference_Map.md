@@ -23,17 +23,17 @@ Referências a outros projetos, como `AmazonFlow` e `Justiça Ágil`, podem apar
 ## Ordem De Leitura
 
 1. [[docs/00_Governance/Chat_Bootstrap|Chat Bootstrap]]
-2. [[docs/Home|Home]]
-3. [[docs/02_Guides/Development_Handoff_Log|Development Handoff Log]]
-4. [[docs/02_Guides/Mission_Compass|Mission Compass]]
+2. [[docs/00_Governance/Constitution|Constituição Global]]
+3. [[docs/Home|Home]]
+4. [[docs/02_Guides/Development_Handoff_Log|Development Handoff Log]]
 5. [[docs/02_Guides/Roadmap|Roadmap Operacional]]
-6. [[docs/02_Guides/Antigravity_Delegation_and_Review|Antigravity Delegation and Review]]
-7. [[docs/02_Guides/Delivery_Methodology|Delivery Methodology]]
-8. [[research/README|Research Canonical Flow]]
-9. [[docs/05_Ideation/AI_Systems_Audit_Sprint|AI Systems Audit Sprint]]
-10. [[docs/05_Ideation/AI_Qualification_Framework|AI Qualification Framework]]
-11. [[docs/03_Templates/Opportunity_Intake_and_Fit|Opportunity Intake and Fit]]
-12. [[docs/03_Templates/Proposal_and_Localization_Pack|Proposal and Localization Pack]]
+6. [[docs/02_Guides/Delivery_Methodology|Delivery Methodology]]
+7. [[research/README|Research Canonical Flow]]
+7.5 [[docs/00_Governance/Eligibility_Filter|Filtro de Elegibilidade]] (Entry Gate)
+8. [[docs/05_Ideation/AI_Systems_Audit_Sprint|AI Systems Audit Sprint]] (Tese de Oferta)
+9. [[docs/05_Ideation/AI_Qualification_Framework|AI Qualification Framework]]
+10. [[docs/03_Templates/Opportunity_Intake_and_Fit|Opportunity Intake and Fit]]
+11. [[docs/03_Templates/Proposal_and_Localization_Pack|Proposal and Localization Pack]]
 
 ## Fontes De Verdade
 
@@ -41,15 +41,17 @@ Estes são os documentos canônicos do projeto:
 
 - [[docs/00_Governance/Reference_Map|Mapa de Referências]]
 - [[docs/00_Governance/Chat_Bootstrap|Chat Bootstrap]]
+- [[docs/00_Governance/Constitution|Constituição Global]]
+- [[docs/00_Governance/Eligibility_Filter|Filtro de Elegibilidade]]
+- [[docs/05_Ideation/AI_Systems_Audit_Sprint|AI Systems Audit Sprint]]
+- [[docs/00_Governance/Obsidian_Skill_Registry|Obsidian Skill Registry]]
 - [[docs/Home|Home]]
 - [[docs/02_Guides/Development_Handoff_Log|Development Handoff Log]]
 - [[docs/02_Guides/Mission_Compass|Mission Compass]]
-- [[docs/00_Governance/Constitution|Constituição Global]]
 - [[docs/02_Guides/Roadmap|Roadmap Operacional]]
 - [[docs/02_Guides/Antigravity_Delegation_and_Review|Antigravity Delegation and Review]]
 - [[docs/02_Guides/Delivery_Methodology|Delivery Methodology]]
 - [[research/README|Research Canonical Flow]]
-- [[docs/05_Ideation/AI_Systems_Audit_Sprint|AI Systems Audit Sprint]]
 - [[docs/05_Ideation/AI_Qualification_Framework|AI Qualification Framework]]
 - [[docs/03_Templates/Opportunity_Intake_and_Fit|Opportunity Intake and Fit]]
 - `docs/03_Templates/`
@@ -59,7 +61,8 @@ Estes são os documentos canônicos do projeto:
 Use a sequência abaixo para operar qualquer oportunidade:
 
 1. Research
-2. Research handoff
+2. **Eligibility Filtering** (O Gate Principal)
+3. Research handoff
 3. Operator workspace bootstrap
 4. Qualification
 5. Feasibility
@@ -99,10 +102,12 @@ Papeis:
 ### Camada 1: Navegação E Governança
 
 - `docs/00_Governance/Chat_Bootstrap.md`
-- `docs/Home.md`
+- `docs/00_Governance/Reference_Map.md`
 - `docs/00_Governance/Constitution.md`
+- `docs/00_Governance/Eligibility_Filter.md`
+- `docs/00_Governance/Obsidian_Skill_Registry.md`
+- `docs/Home.md`
 - `docs/02_Guides/Development_Handoff_Log.md`
-- este documento
 
 ### Camada 2: Operação
 
@@ -111,6 +116,7 @@ Papeis:
 - `docs/02_Guides/Antigravity_Delegation_and_Review.md`
 - `docs/02_Guides/Delivery_Methodology.md`
 - `docs/02_Guides/Setup_Guide.md`
+- `docs/02_Guides/Antigravity_Execution_Playbook.md`
 
 ### Camada 2B: Controle Da Automacao
 

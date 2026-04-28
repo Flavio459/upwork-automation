@@ -47,6 +47,7 @@ export interface NicheResearchCandidate {
     estimatedLaborCostUsd?: number;
     internalHourlyCostUsd?: number;
     expectedNegotiatedValueUsd?: number;
+    aspirationalStrategicValueUsd?: number;
     caseStrategy: CaseStrategy;
     evidence?: string[];
     sourceUrls?: string[];
@@ -55,6 +56,7 @@ export interface NicheResearchCandidate {
 
 export interface NicheResearchEvaluation extends NicheResearchCandidate {
     expectedNegotiatedValueUsd: number;
+    aspirationalStrategicValueUsd: number;
     estimatedLaborCostUsd: number;
     estimatedInfraCostUsd: number;
     estimatedDeliveryCostUsd: number;
@@ -114,6 +116,7 @@ export interface ResearchHandoffPayload {
         estimated_delivery_cost: string;
         estimated_labor_cost: string;
         estimated_infra_cost: string;
+        aspirational_strategic_value: string;
     };
     nextTemplates: string[];
     transitionNotes: string[];
@@ -169,9 +172,8 @@ function productizedValue(range: TicketRange): number {
 
 function ticketScoreFromAmount(amountUsd: number): number {
     if (amountUsd <= 0) return 0;
-    if (amountUsd < 250) return 15;
-    if (amountUsd < 500) return 30;
-    if (amountUsd < 1000) return 45;
+    if (amountUsd < 400) return 10;
+    if (amountUsd < 1000) return 45; // Discovery Tier (Entry)
     if (amountUsd < 2500) return 60;
     if (amountUsd < 5000) return 75;
     if (amountUsd < 10000) return 88;
@@ -278,6 +280,7 @@ export class NicheResearchAnalyzer {
             (this.assumptions.pricingMode === 'productized'
                 ? productizedValue(candidate.ticketRangeUsd)
                 : midpoint(candidate.ticketRangeUsd));
+        const aspirationalStrategicValueUsd = candidate.aspirationalStrategicValueUsd ?? 0;
         const estimatedLaborCostUsd =
             candidate.estimatedLaborCostUsd ??
             candidate.estimatedDeliveryHours * (candidate.internalHourlyCostUsd ?? this.assumptions.internalHourlyCostUsd);
@@ -310,11 +313,13 @@ export class NicheResearchAnalyzer {
         const hardRejectReason =
             aiExecutabilityScore < this.assumptions.minimumAiExecutabilityScore
                 ? `AI executability below minimum threshold (${Math.round(this.assumptions.minimumAiExecutabilityScore)}%).`
-                : marginUsd <= 0
-                    ? 'Delivery cost is higher than or equal to negotiated value.'
-                    : marginRatio < this.assumptions.minimumMarginRatio
-                        ? `Margin ratio below minimum threshold (${Math.round(this.assumptions.minimumMarginRatio * 100)}%).`
-                        : undefined;
+                : ticketBasis < 400
+                    ? 'Budget below absolute project floor (US$ 400.00).'
+                    : marginUsd <= 0
+                        ? 'Delivery cost is higher than or equal to negotiated value.'
+                        : marginRatio < this.assumptions.minimumMarginRatio
+                            ? `Margin ratio below minimum threshold (${Math.round(this.assumptions.minimumMarginRatio * 100)}%).`
+                            : undefined;
 
         const totalScore = round2(
             demandScore * weights.demand +
@@ -338,6 +343,7 @@ export class NicheResearchAnalyzer {
         return {
             ...candidate,
             expectedNegotiatedValueUsd,
+            aspirationalStrategicValueUsd,
             estimatedLaborCostUsd: round2(estimatedLaborCostUsd),
             estimatedInfraCostUsd: round2(estimatedInfraCostUsd),
             estimatedDeliveryCostUsd,
@@ -390,13 +396,14 @@ export function buildResearchReportMarkdown(options: {
     const topThree = candidates.slice(0, 3);
 
     const markdownTable = [
-        '| # | Niche | Surface | Category | Subcategory | Demand | Ticket Range | Competition | Complexity | Fit | AI Exec | Cost | Value | Margin | Score | Decision |',
-        '| --- | --- | --- | --- | --- | ---: | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |',
+        '| # | Niche | Surface | Category | Subcategory | Demand | Ticket Range | Target Anchor | Competition | Complexity | Fit | AI Exec | Cost | Real Value | Margin | Score | Decision |',
+        '| --- | --- | --- | --- | --- | ---: | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |',
         ...candidates.map((candidate, index) => {
             const range = `${formatMoney(candidate.ticketRangeUsd.minUsd)}-${formatMoney(candidate.ticketRangeUsd.maxUsd)}`;
+            const anchor = candidate.aspirationalStrategicValueUsd > 0 ? formatMoney(candidate.aspirationalStrategicValueUsd) : '-';
             const recommendation = candidate.hardRejectReason ? `REJECT: ${candidate.hardRejectReason}` : candidate.recommendation;
 
-            return `| ${index + 1} | ${escapeCell(candidate.name)} | ${escapeCell(candidate.surface)} | ${escapeCell(candidate.category)} | ${escapeCell(candidate.subcategory || '-')} | ${candidate.demandScore.toFixed(0)} | ${escapeCell(range)} | ${candidate.competitionPressureScore.toFixed(0)} | ${candidate.complexityPressureScore.toFixed(0)} | ${candidate.fitScore.toFixed(0)} | ${candidate.aiExecutabilityScore.toFixed(0)} | ${escapeCell(formatMoney(candidate.estimatedDeliveryCostUsd))} | ${escapeCell(formatMoney(candidate.expectedNegotiatedValueUsd))} | ${escapeCell(formatMoney(candidate.marginUsd))} | ${candidate.totalScore.toFixed(1)} | ${escapeCell(recommendation)} |`;
+            return `| ${index + 1} | ${escapeCell(candidate.name)} | ${escapeCell(candidate.surface)} | ${escapeCell(candidate.category)} | ${escapeCell(candidate.subcategory || '-')} | ${candidate.demandScore.toFixed(0)} | ${escapeCell(range)} | ${anchor} | ${candidate.competitionPressureScore.toFixed(0)} | ${candidate.complexityPressureScore.toFixed(0)} | ${candidate.fitScore.toFixed(0)} | ${candidate.aiExecutabilityScore.toFixed(0)} | ${escapeCell(formatMoney(candidate.estimatedDeliveryCostUsd))} | ${escapeCell(formatMoney(candidate.expectedNegotiatedValueUsd))} | ${escapeCell(formatMoney(candidate.marginUsd))} | ${candidate.totalScore.toFixed(1)} | ${escapeCell(recommendation)} |`;
         })
     ].join('\n');
 
@@ -404,7 +411,7 @@ export function buildResearchReportMarkdown(options: {
         ? topThree
               .map(
                   candidate =>
-                      `- **${candidate.name}**: score ${candidate.totalScore.toFixed(1)}, AI exec ${candidate.aiExecutabilityScore.toFixed(0)}%, margin ${formatMoney(candidate.marginUsd)} (${formatPercent(candidate.marginRatio)}), decision ${candidate.hardRejectReason ? 'REJECT' : candidate.recommendation}.`
+                      `- **${candidate.name}**: score ${candidate.totalScore.toFixed(1)}, AI exec ${candidate.aiExecutabilityScore.toFixed(0)}%, real margin ${formatMoney(candidate.marginUsd)} (${formatPercent(candidate.marginRatio)}), decision ${candidate.hardRejectReason ? 'REJECT' : candidate.recommendation}.`
               )
               .join('\n')
         : '- No candidates were provided.';
@@ -569,7 +576,8 @@ export function buildResearchHandoffPayload(options: {
                 expected_value: 'unknown',
                 estimated_delivery_cost: 'unknown',
                 estimated_labor_cost: 'unknown',
-                estimated_infra_cost: 'unknown'
+                estimated_infra_cost: 'unknown',
+                aspirational_strategic_value: 'unknown'
             },
             nextTemplates: [
                 'docs/03_Templates/Opportunity_Intake_and_Fit.md',
@@ -594,6 +602,7 @@ export function buildResearchHandoffPayload(options: {
     const estimatedDeliveryCost = formatOptionalMoney(candidate.estimatedDeliveryCostUsd);
     const estimatedLaborCost = formatOptionalMoney(candidate.estimatedLaborCostUsd);
     const estimatedInfraCost = formatOptionalMoney(candidate.estimatedInfraCostUsd);
+    const aspirationalStrategicValue = formatOptionalMoney(candidate.aspirationalStrategicValueUsd);
     const fitInitial = mapOfferFit(candidate.recommendation);
     const decisionInitial = candidate.recommendation;
     const feasibilityStatus = mapFeasibilityStatus(candidate.recommendation);
@@ -640,7 +649,8 @@ export function buildResearchHandoffPayload(options: {
             expected_value: estimatedDeliveryCost,
             estimated_delivery_cost: estimatedDeliveryCost,
             estimated_labor_cost: estimatedLaborCost,
-            estimated_infra_cost: estimatedInfraCost
+            estimated_infra_cost: estimatedInfraCost,
+            aspirational_strategic_value: aspirationalStrategicValue
         },
         nextTemplates: [
             'docs/03_Templates/Opportunity_Intake_and_Fit.md',
@@ -705,7 +715,8 @@ export function buildResearchHandoffMarkdown(options: {
         `| \`expected_value\` | ${escapeCell(payload.economicSignals.expected_value)} |`,
         `| \`estimated_delivery_cost\` | ${escapeCell(payload.economicSignals.estimated_delivery_cost)} |`,
         `| \`estimated_labor_cost\` | ${escapeCell(payload.economicSignals.estimated_labor_cost)} |`,
-        `| \`estimated_infra_cost\` | ${escapeCell(payload.economicSignals.estimated_infra_cost)} |`
+        `| \`estimated_infra_cost\` | ${escapeCell(payload.economicSignals.estimated_infra_cost)} |`,
+        `| \`aspirational_strategic_value\` | ${escapeCell(payload.economicSignals.aspirational_strategic_value)} |`
     ].join('\n');
 
     const candidateSection = payload.candidateSnapshot

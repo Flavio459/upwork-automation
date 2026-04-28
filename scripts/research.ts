@@ -66,6 +66,14 @@ function parseArgs(argv: string[]): CliArgs {
     };
 }
 
+function printPreFlightInfo(args: CliArgs): void {
+    console.log('\n--- [Upwork Solo OS: Research Pre-flight] ---');
+    console.log(`📡 Pricing Mode: ${args.pricingMode.toUpperCase()}`);
+    console.log(`👁️  Headless:     ${args.headless ? 'YES' : 'NO (Vertical Flow Mode)'}`);
+    console.log(`⏱️  Timeouts:     Challenge: ${args.challengeTimeoutMs / 1000}s, Interval: ${args.challengeIntervalMs / 1000}s`);
+    console.log('----------------------------------------------\n');
+}
+
 function ensureDirectory(filePath: string): void {
     fs.mkdirSync(path.dirname(filePath), { recursive: true });
 }
@@ -207,12 +215,12 @@ function speedToCashScoreFromOpportunities(opportunityCount: number, budgets: nu
     if (opportunityCount >= 20) score += 8;
 
     const medianBudget = median(budgets);
-    if (medianBudget >= 500 && medianBudget <= 5000) {
+    if (medianBudget >= 400 && medianBudget <= 5000) {
         score += 12;
     } else if (medianBudget > 5000) {
         score += 6;
-    } else if (medianBudget > 0 && medianBudget < 250) {
-        score -= 10;
+    } else if (medianBudget > 0 && medianBudget < 400) {
+        score -= 15;
     }
 
     return clamp(score, 0, 100);
@@ -413,14 +421,17 @@ function buildCandidatesFromLiveOpportunities(opportunities: LiveUpworkOpportuni
         const estimatedInfraCostUsd = round2(/(ai|llm|automation|api|workflow)/i.test(cluster) ? 8 : 3);
         const { category, subcategory } = mapOpportunityCategory(cluster);
         const sourceUrls = bucket.map(opportunity => opportunity.url).filter(Boolean);
-        const strategicPackageFloorUsd = /(compliance|governance|audit|discovery|strategy|roadmap|fractional|advisory|assessment|consulting)/i.test(joinedText)
-            ? 5000
-            : /(orchestration|multi-agent|architecture|rag|vector database|integration|automation|ai integration|workflow)/i.test(joinedText)
-                ? 2500
-                : 0;
         const expectedNegotiatedValueUsd = pricingMode === 'productized'
-            ? Math.max((budgetRange.minUsd + budgetRange.maxUsd) / 2, budgetRange.maxUsd * 1.25, strategicPackageFloorUsd)
+            ? Math.max((budgetRange.minUsd + budgetRange.maxUsd) / 2, budgetRange.maxUsd * 1.25)
             : undefined;
+
+        const aspirationalStrategicValueUsd = (() => {
+            const isAuditLed = /(compliance|governance|audit|discovery|strategy|roadmap|fractional|advisory|assessment|consulting)/i.test(joinedText);
+            const isArchitectureLed = /(orchestration|multi-agent|architecture|rag|vector database|integration|automation|ai integration|workflow)/i.test(joinedText);
+            if (isAuditLed) return 5000;
+            if (isArchitectureLed) return 2500;
+            return 0;
+        })();
 
         return {
             id: slugify(cluster),
@@ -441,6 +452,7 @@ function buildCandidatesFromLiveOpportunities(opportunities: LiveUpworkOpportuni
             estimatedInfraCostUsd,
             estimatedLaborCostUsd,
             expectedNegotiatedValueUsd,
+            aspirationalStrategicValueUsd,
             caseStrategy: caseStrategyFromOpportunity(joinedText),
             evidence: [
                 `Live opportunities analyzed: ${bucket.length}`,
@@ -448,7 +460,7 @@ function buildCandidatesFromLiveOpportunities(opportunities: LiveUpworkOpportuni
                 ...bucket.slice(0, 3).map(opportunity => `Budget: ${opportunity.budget || 'Negotiable'}`)
             ],
             sourceUrls,
-            notes: `Derived from live Upwork opportunity cards in the authenticated browser session. Pricing mode: ${pricingMode}. Strategic floor: ${strategicPackageFloorUsd || 'none'}.`
+            notes: `Derived from live Upwork opportunity cards in the authenticated browser session. Pricing mode: ${pricingMode}. Aspirational anchor: ${aspirationalStrategicValueUsd || 'none'}.`
         } satisfies NicheResearchCandidate;
     });
 
@@ -482,7 +494,9 @@ function mergeCandidates(primary: NicheResearchCandidate[], fallback: NicheResea
 }
 
 async function main() {
-    const args = parseArgs(process.argv.slice(2));
+    const args = parseArgs(process.argv);
+    printPreFlightInfo(args);
+
     const runStartedAt = new Date();
 
     const overrides = readOptionalJsonFile<ResearchInputFile>(args.inputPath);

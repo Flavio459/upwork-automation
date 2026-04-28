@@ -24,10 +24,10 @@ O projeto combina duas camadas:
 
 1. Leia [docs/00_Governance/Chat_Bootstrap.md](docs/00_Governance/Chat_Bootstrap.md)
 2. Leia [docs/00_Governance/Reference_Map.md](docs/00_Governance/Reference_Map.md)
-3. Leia [docs/02_Guides/Development_Handoff_Log.md](docs/02_Guides/Development_Handoff_Log.md)
-4. Abra [docs/Home.md](docs/Home.md)
-5. Leia [docs/02_Guides/Roadmap.md](docs/02_Guides/Roadmap.md)
-6. Leia [docs/02_Guides/Delivery_Methodology.md](docs/02_Guides/Delivery_Methodology.md)
+3. Leia [docs/05_Ideation/AI_Systems_Audit_Sprint.md](docs/05_Ideation/AI_Systems_Audit_Sprint.md)
+4. **Leia [docs/00_Governance/Eligibility_Filter.md](docs/00_Governance/Eligibility_Filter.md)** (Portão de Entrada)
+5. Leia [docs/02_Guides/Development_Handoff_Log.md](docs/02_Guides/Development_Handoff_Log.md)
+6. Abra [docs/Home.md](docs/Home.md)
 7. Use [research/README.md](research/README.md) para selecionar oportunidades
 8. Use os templates em [docs/03_Templates](docs/03_Templates) para operar o ciclo
 
@@ -60,6 +60,7 @@ Controle de execucao:
 
 1. Rodar `research` e coletar oportunidades visíveis no feed autenticado
 2. Escolher a melhor oportunidade por fit, margem e executabilidade
+2.5 **Filtrar elegibilidade com [Eligibility_Filter.md](docs/00_Governance/Eligibility_Filter.md)** (Gate Binário US$ 400+)
 3. Qualificar com [AI_Qualification_Framework.md](docs/05_Ideation/AI_Qualification_Framework.md)
 4. Validar viabilidade com [Feasibility_and_Capability_Assessment.md](docs/03_Templates/Feasibility_and_Capability_Assessment.md)
 5. Estimar preço e cronograma com [Costing_Pricing_and_Timeline.md](docs/03_Templates/Costing_Pricing_and_Timeline.md)
@@ -73,6 +74,7 @@ Controle de execucao:
 - [Chat Bootstrap](docs/00_Governance/Chat_Bootstrap.md)
 - [Home do Vault](docs/Home.md)
 - [Mapa de Referências](docs/00_Governance/Reference_Map.md)
+- [Filtro de Elegibilidade](docs/00_Governance/Eligibility_Filter.md)
 - [Roadmap Operacional](docs/02_Guides/Roadmap.md)
 - [Development Handoff Log](docs/02_Guides/Development_Handoff_Log.md)
 - [Mission Compass](docs/02_Guides/Mission_Compass.md)

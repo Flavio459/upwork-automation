@@ -13,13 +13,14 @@ Se você abrir o cofre para trabalhar agora, entre por aqui:
 
 1. [[docs/00_Governance/Chat_Bootstrap|Chat Bootstrap]]
 2. [[docs/00_Governance/Reference_Map|Reference Map]]
-3. [[docs/02_Guides/Development_Handoff_Log|Development Handoff Log]]
-4. [[docs/02_Guides/Mission_Compass|Mission Compass]]
-5. [[docs/02_Guides/Roadmap|Roadmap Operacional]]
-6. [[research/README|Research Canonical Flow]]
-7. [[docs/05_Ideation/AI_Qualification_Framework|AI Qualification Framework]]
-8. [[docs/03_Templates/Opportunity_Intake_and_Fit|Opportunity Intake and Fit]]
-9. [[docs/03_Templates/Proposal_and_Localization_Pack|Proposal and Localization Pack]]
+3. [[docs/00_Governance/Obsidian_Skill_Registry|Obsidian Skill Registry]]
+4. [[docs/02_Guides/Development_Handoff_Log|Development Handoff Log]]
+5. [[docs/02_Guides/Mission_Compass|Mission Compass]]
+6. [[docs/02_Guides/Roadmap|Roadmap Operacional]]
+7. [[research/README|Research Canonical Flow]]
+8. [[docs/05_Ideation/AI_Qualification_Framework|AI Qualification Framework]]
+9. [[docs/03_Templates/Opportunity_Intake_and_Fit|Opportunity Intake and Fit]]
+10. [[docs/03_Templates/Proposal_and_Localization_Pack|Proposal and Localization Pack]]
 
 ## Estado Atual
 

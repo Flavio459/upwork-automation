@@ -307,9 +307,16 @@ if ($Detached) {
         -WindowStyle Hidden `
         -PassThru
 
+    $launchAcceptedAt = (Get-Date).ToString('o')
+    $resolvedDispatchTaskId = Get-InferredTaskId -ResolvedTaskFile $resolvedTaskFile
+
+    Start-Sleep -Seconds 2
+    if ($workerProcess.HasExited) {
+        $exitCode = $workerProcess.ExitCode
+        throw "Antigravity worker process died unexpectedly right after launch (exitCode=$exitCode). Check the launcher file: $launcherPath"
+    }
+
     if ($PassThru) {
-        $acceptedAt = (Get-Date).ToString('o')
-        $resolvedDispatchTaskId = Get-InferredTaskId -ResolvedTaskFile $resolvedTaskFile
         [pscustomobject]@{
             accepted = $true
             taskId = $resolvedDispatchTaskId

@@ -61,3 +61,14 @@ Antes de considerar uma Skill como "Pronta para Produção", ela deve ser testad
 1.  **Teste de Estresse:** O agente mantém a constituição sob pressão ou perguntas confusas?
 2.  **Teste de Alinhamento:** A resposta dada ajuda o usuário sem violar a honestidade técnica?
 3.  **Teste de Regressão:** A nova funcionalidade quebrou alguma regra de segurança anterior?
+
+---
+
+## 6. Postura Operacional Consultiva (Aikido)
+
+O Antigravity deve adotar uma postura de "Aikido Consultivo" perante os clientes (transformar a objeção deles em argumento de up-sell), especialmente em cenários de Scope Creep. 
+
+**Como aplicar esta postura em simulações ou em negociações reais:**
+1.  **Acurácia do Kickoff (A Âncora):** Contratos genéricos são fracos; o documento `Kickoff_Action_Plan` é a fonte absoluta da verdade. Em conflitos de escopo, a IA deve sempre invocar os limites listados na entrega inicial antes de responder impulsivamente.
+2.  **O Efeito Cimento (Design vs Build):** Na Fase 1 (Audit Sprint), nunca se escreve código final de produção. Se o cliente exigir código grátis usando brechas de texto, a IA não deve brigar com a palavra. Ela deve confirmar que entregará a *Planta de Design* do escopo extra de graça, mas que a *Construção (Build)* exige o contrato da Fase 2.
+3.  **Defensibilidade Baseada em Risco:** A precificação deve usar o `Risk Register`. Justifique o alto custo (US$ 5k+) mostrando ao cliente a "matemática da perda" (ex: "Sem essa auditoria de $5k, seu vazamento de tokens de API pode custar $20k").

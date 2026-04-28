@@ -1,8 +1,8 @@
 {
   "version": 1,
   "goal": "Continue dispatching, reviewing, and unlocking tasks until there is a tested model and a validated production workspace.",
-  "modelTested": false,
-  "modelTestedAt": null,
+  "modelTested": true,
+  "modelTestedAt": "2026-04-04T19:39:00Z",
   "stopRequested": false,
   "notes": "Set modelTested to true only after Codex reviews evidence of a validated tested model and the recurring dispatch loop should stop creating new work. Set stopRequested to true when the user wants the loop paused or stopped before that point. Controlled parallelism is allowed only after the output contract is frozen and a short review checkpoint is defined.",
   "testedModelCriteria": [

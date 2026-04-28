@@ -412,15 +412,23 @@ Gate:
 
 ## Regras de Controle
 
-### Change Order
+### Change Order e Escopo Extra (Aikido)
 
-Abrir `change order` quando houver:
+Abrir `change order` formal quando houver:
 
 - crescimento de escopo
 - nova integração
 - nova plataforma ou idioma
 - atraso causado por dependência externa
 - novo ciclo de revisão fora do combinado
+
+**Tática de "Concessão Arquitetural":** Se o cliente pedir uma integração vital (ex: um novo Agente de IA) que não estava no escopo da **Fase 1 (Audit)**, use o *Aikido Consultivo*. Conceda a inclusão desse agente no *Design Document* sem custo extra para provar boa vontade, mas ancore a *construção (código)* obrigatoriamente no Change Order da Fase 2. Todo código construído é monetizado.
+
+### Higiene DocSync e Proteção contra Stale Data
+
+Todo documento gerado em `reports/operator-workspaces/` ou espaços de produção deve:
+- Conter um bloco YAML (Frontmatter) rastreando `status` (ex: `draft`, `verified`, `stale`).
+- Usar tags `#stale` em arquivos descendentes se o "Source Document" (ex: Handoff) for alterado, forçando uma pausa operacional do Agente IA até que haja revisão analógica do Operador.
 
 ### Aceite
 

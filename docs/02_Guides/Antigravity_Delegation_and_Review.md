@@ -152,6 +152,7 @@ Nao existe mais retry automatico em background.
 Regra pratica:
 
 - se a tarefa estiver `running` e ainda nao houver `resultFile`, ela continua aguardando revisao explicita
+- se a tarefa estiver `running`, nao houver `resultFile` e o `launchPid` estiver morto, a revisao marca `needs_attention` com o motivo objetivo
 - se o `resultFile` existir mas o contrato estiver incompleto, a tarefa vira `needs_attention`
 - se a validacao falhar, a tarefa vira `needs_attention`
 - se a execucao antiga tiver deixado estado ambiguo, a tarefa deve voltar para `pending` por decisao explicita, nunca por retry silencioso

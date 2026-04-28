@@ -18,10 +18,10 @@ Este documento fecha essa lacuna.
 
 ## Como O Motor Deve Entender
 
-O motor nao "descobre" sozinho as regras do vault.
-Ele precisa ser orientado a ler os documentos certos, na ordem certa, antes de tomar qualquer decisao operacional.
+O motor não "descobre" sozinho as regras do vault.
+Ele precisa ser orientado a ler os documentos certos, na ordem certa, antes de tomar qualquer decisão operacional.
 
-Se a conversa nova nao tiver esse contexto, ela deve ser tratada como sem bootstrap e a primeira acao e carregar este arquivo.
+Se a conversa nova não tiver esse contexto, ela deve ser tratada como sem bootstrap e a primeira acao e carregar este arquivo.
 
 ## Ordem De Leitura Para Um Chat Novo
 
@@ -32,6 +32,7 @@ Se a conversa nova nao tiver esse contexto, ela deve ser tratada como sem bootst
 5. [[docs/02_Guides/Roadmap|Roadmap Operacional]]
 6. [[docs/02_Guides/Delivery_Methodology|Delivery Methodology]]
 7. [[research/README|Research Canonical Flow]]
+7.5 [[docs/00_Governance/Eligibility_Filter|Filtro de Elegibilidade]] (Entry Gate - **OBRIGATÓRIO**)
 8. [[docs/05_Ideation/AI_Systems_Audit_Sprint|AI Systems Audit Sprint]]
 9. [[docs/05_Ideation/AI_Qualification_Framework|AI Qualification Framework]]
 10. Templates operacionais em [[docs/03_Templates/Opportunity_Intake_and_Fit|Templates operacionais]]
@@ -41,8 +42,9 @@ Se a conversa nova nao tiver esse contexto, ela deve ser tratada como sem bootst
 - operar em `pt-BR` internamente
 - localizar artefatos externos para a lingua do cliente
 - tratar `AI Systems Audit Sprint` como oferta principal
+- **Regra de Entrada:** Seguir o `Eligibility Filter` antes de iniciar qualquer Intake ou Qualificação.
+- **Regra do 12%:** Descartar leads onde o Custo Real ($Horas_{expert} \times Taxa_{op}$) exceda o budget do cliente em mais de 12%.
 - tratar referências a outros projetos como contexto histórico ou benchmark, não como escopo ativo
-- ler `docs/02_Guides/Development_Handoff_Log.md` antes de assumir onde o projeto parou
 - nao enviar proposta sem qualificacao, viabilidade, pricing e revisao de localizacao
 - nao confundir documento legado com fonte de verdade
 - seguir o mapa de referencias antes de abrir arquivos historicos
