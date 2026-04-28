@@ -1,6 +1,6 @@
-# Upwork Solo OS
+# Arbitrage AI
 
-Repositório do sistema operacional solo para Upwork, com pesquisa assistida por navegador, seleção de oferta, qualificação, proposta localizada, produção do serviço/produto vendido e handoff operacional documentado.
+Repositório do sistema operacional de arbitragem de contratos com pesquisa assistida por navegador, seleção de oferta, qualificação, proposta localizada, produção do serviço/produto vendido e handoff operacional documentado.
 
 Pitch de 10 segundos:
 
