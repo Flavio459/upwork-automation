@@ -1,5 +1,5 @@
 {
-  "name": "upwork-solo-os",
+  "name": "arbitrage-ai",
   "version": "2.0.0",
   "scripts": {
     "delegate:antigravity": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/delegate-antigravity.ps1",
